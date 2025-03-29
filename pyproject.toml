@@ -1,0 +1,14 @@
+[project]
+name = "plotgpm"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "matplotlib>=3.10.1",
+    "pyside6>=6.8.3",
+]
+
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.12.0",
+]
