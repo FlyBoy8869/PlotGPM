@@ -1,5 +1,3 @@
-from typing import Callable
-
 from PySide6.QtWidgets import QDialog
 
 from .mainwindow_ui import Ui_MainWindow
@@ -53,12 +51,11 @@ class MainWindowView(QDialog, Ui_MainWindow):
 
     @staticmethod
     def _validate_entries(entries: list[str], type_) -> bool:
-        if all(entries):
-            for entry in entries:
-                try:
-                    type_(entry)
-                except ValueError:
-                    return False
+        def check_type(entries_) -> bool:
+            try:
+                list(map(type_, entries_))
+            except ValueError:
+                return False
             return True
-        else:
-            return False
+
+        return all(entries) and check_type(entries)
