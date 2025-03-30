@@ -1,3 +1,5 @@
+from typing import Callable
+
 from PySide6.QtWidgets import QDialog
 
 from .mainwindow_ui import Ui_MainWindow
@@ -5,6 +7,7 @@ from config import config
 from plot import plot
 
 VERSION = "0.1.0"
+
 
 class MainWindowView(QDialog, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -25,8 +28,15 @@ class MainWindowView(QDialog, Ui_MainWindow):
         pressures = self._get_pressures()
         flows = self._get_flows()
 
-        if self._validate_flows(flows):
-            plot(list(map(int, pressures)), list(map(float,flows)), self.graph_title.text(), self.uut_legend_entry.text())
+        if self._validate_entries(flows, float) and self._validate_entries(
+            pressures, int
+        ):
+            plot(
+                list(map(int, pressures)),
+                list(map(float, flows)),
+                self.graph_title.text(),
+                self.uut_legend_entry.text(),
+            )
 
     def _get_flows(self) -> list[str]:
         return self._get_label_texts("flow")
@@ -42,5 +52,13 @@ class MainWindowView(QDialog, Ui_MainWindow):
             getattr(self, f"{'psi'}_{i}").setText(pressures[i - 1])
 
     @staticmethod
-    def _validate_flows(flows):
-        return all(flows)
+    def _validate_entries(entries: list[str], type_) -> bool:
+        if all(entries):
+            for entry in entries:
+                try:
+                    type_(entry)
+                except ValueError:
+                    return False
+            return True
+        else:
+            return False
