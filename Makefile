@@ -5,7 +5,7 @@ BASELINE_DATA = ./baseline_flow_data_2008
 INCLUDE_BASELINE = --add-data=$(BASELINE_DATA):.
 
 app: clean-all
-	uv run pyinstaller --windowed --name PlotGPM $(INCLUDE_CONFIG) $(INCLUDE_BASELINE) main.py
+	uv run pyinstaller --windowed --name PlotGPM-gui $(INCLUDE_CONFIG) $(INCLUDE_BASELINE) main.py
 
 clean-all:
 	IF EXIST "build" (rmdir /S /Q build)
