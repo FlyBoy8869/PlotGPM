@@ -8,7 +8,8 @@ from .mainwindow_ui import Ui_MainWindow
 from config import config
 from plot import plot
 
-VERSION = "0.1.0"
+from _version import version
+
 APP_ICON_PATH = os.path.join(Path(os.path.dirname(__file__)).parent, "icon.ico")
 
 class MainWindowView(QDialog, Ui_MainWindow):
@@ -17,7 +18,7 @@ class MainWindowView(QDialog, Ui_MainWindow):
         self.setupUi(self)
 
         self.setWindowIcon(QIcon(APP_ICON_PATH))
-        self.setWindowTitle(f"PlotGPM - {VERSION}")
+        self.setWindowTitle(f"PlotGPM - {version}")
         self.load_default_pressures()
         self.graph_title.setText(config["PLOT"]["title"])
 
