@@ -60,7 +60,9 @@ class Ui_MainWindow(object):
 
         self.flow_1 = QLineEdit(MainWindow)
         self.flow_1.setObjectName(u"flow_1")
+        self.flow_1.setCursorPosition(0)
         self.flow_1.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.flow_1.setClearButtonEnabled(True)
 
         self.gridLayout.addWidget(self.flow_1, 1, 2, 1, 1)
 
@@ -77,7 +79,9 @@ class Ui_MainWindow(object):
 
         self.flow_2 = QLineEdit(MainWindow)
         self.flow_2.setObjectName(u"flow_2")
+        self.flow_2.setCursorPosition(0)
         self.flow_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.flow_2.setClearButtonEnabled(True)
 
         self.gridLayout.addWidget(self.flow_2, 2, 2, 1, 1)
 
@@ -94,7 +98,9 @@ class Ui_MainWindow(object):
 
         self.flow_3 = QLineEdit(MainWindow)
         self.flow_3.setObjectName(u"flow_3")
+        self.flow_3.setCursorPosition(0)
         self.flow_3.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.flow_3.setClearButtonEnabled(True)
 
         self.gridLayout.addWidget(self.flow_3, 3, 2, 1, 1)
 
@@ -111,7 +117,9 @@ class Ui_MainWindow(object):
 
         self.flow_4 = QLineEdit(MainWindow)
         self.flow_4.setObjectName(u"flow_4")
+        self.flow_4.setCursorPosition(0)
         self.flow_4.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.flow_4.setClearButtonEnabled(True)
 
         self.gridLayout.addWidget(self.flow_4, 4, 2, 1, 1)
 
@@ -128,7 +136,9 @@ class Ui_MainWindow(object):
 
         self.flow_5 = QLineEdit(MainWindow)
         self.flow_5.setObjectName(u"flow_5")
+        self.flow_5.setCursorPosition(0)
         self.flow_5.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.flow_5.setClearButtonEnabled(True)
 
         self.gridLayout.addWidget(self.flow_5, 5, 2, 1, 1)
 
@@ -145,7 +155,9 @@ class Ui_MainWindow(object):
 
         self.flow_6 = QLineEdit(MainWindow)
         self.flow_6.setObjectName(u"flow_6")
+        self.flow_6.setCursorPosition(0)
         self.flow_6.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.flow_6.setClearButtonEnabled(True)
 
         self.gridLayout.addWidget(self.flow_6, 6, 2, 1, 1)
 
@@ -162,7 +174,9 @@ class Ui_MainWindow(object):
 
         self.flow_7 = QLineEdit(MainWindow)
         self.flow_7.setObjectName(u"flow_7")
+        self.flow_7.setCursorPosition(0)
         self.flow_7.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.flow_7.setClearButtonEnabled(True)
 
         self.gridLayout.addWidget(self.flow_7, 7, 2, 1, 1)
 
@@ -243,25 +257,39 @@ class Ui_MainWindow(object):
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"Flow (GPM)", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Test Point 1:", None))
         self.psi_1.setInputMask(QCoreApplication.translate("MainWindow", u"0000", None))
-        self.flow_1.setInputMask(QCoreApplication.translate("MainWindow", u"00.00", None))
+        self.flow_1.setInputMask(QCoreApplication.translate("MainWindow", u"09.00", None))
+        self.flow_1.setText(QCoreApplication.translate("MainWindow", u".", None))
+        self.flow_1.setPlaceholderText("")
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Test Point 2:", None))
         self.psi_2.setInputMask(QCoreApplication.translate("MainWindow", u"0000", None))
-        self.flow_2.setInputMask(QCoreApplication.translate("MainWindow", u"00.00", None))
+        self.flow_2.setInputMask(QCoreApplication.translate("MainWindow", u"09.00", None))
+        self.flow_2.setText(QCoreApplication.translate("MainWindow", u".", None))
+        self.flow_2.setPlaceholderText("")
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Test Point 3:", None))
         self.psi_3.setInputMask(QCoreApplication.translate("MainWindow", u"0000", None))
-        self.flow_3.setInputMask(QCoreApplication.translate("MainWindow", u"00.00", None))
+        self.flow_3.setInputMask(QCoreApplication.translate("MainWindow", u"09.00", None))
+        self.flow_3.setText(QCoreApplication.translate("MainWindow", u".", None))
+        self.flow_3.setPlaceholderText("")
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Test Point 4:", None))
         self.psi_4.setInputMask(QCoreApplication.translate("MainWindow", u"0000", None))
-        self.flow_4.setInputMask(QCoreApplication.translate("MainWindow", u"00.00", None))
+        self.flow_4.setInputMask(QCoreApplication.translate("MainWindow", u"09.00", None))
+        self.flow_4.setText(QCoreApplication.translate("MainWindow", u".", None))
+        self.flow_4.setPlaceholderText("")
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Test Point 5:", None))
         self.psi_5.setInputMask(QCoreApplication.translate("MainWindow", u"0000", None))
-        self.flow_5.setInputMask(QCoreApplication.translate("MainWindow", u"00.00", None))
+        self.flow_5.setInputMask(QCoreApplication.translate("MainWindow", u"09.00", None))
+        self.flow_5.setText(QCoreApplication.translate("MainWindow", u".", None))
+        self.flow_5.setPlaceholderText("")
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Test Point 6:", None))
         self.psi_6.setInputMask(QCoreApplication.translate("MainWindow", u"0000", None))
-        self.flow_6.setInputMask(QCoreApplication.translate("MainWindow", u"00.00", None))
+        self.flow_6.setInputMask(QCoreApplication.translate("MainWindow", u"09.00", None))
+        self.flow_6.setText(QCoreApplication.translate("MainWindow", u".", None))
+        self.flow_6.setPlaceholderText("")
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Test Point 7:", None))
         self.psi_7.setInputMask(QCoreApplication.translate("MainWindow", u"0000", None))
-        self.flow_7.setInputMask(QCoreApplication.translate("MainWindow", u"00.00", None))
+        self.flow_7.setInputMask(QCoreApplication.translate("MainWindow", u"09.00", None))
+        self.flow_7.setText(QCoreApplication.translate("MainWindow", u".", None))
+        self.flow_7.setPlaceholderText("")
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Graph Title:", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"UUT legend entry:", None))
         self.create_graph.setText(QCoreApplication.translate("MainWindow", u"Create Graph", None))

@@ -1,3 +1,4 @@
+import contextlib
 import os.path
 from pathlib import Path
 
@@ -24,6 +25,8 @@ class MainWindowView(QDialog, Ui_MainWindow):
 
         self.create_graph.clicked.connect(self._create_graph)
 
+        self.flow_1.setFocus()
+
     def load_default_pressures(self) -> None:
         pressures = config["PLOT"]["pressures"].split(" ")
         self._set_pressure_label_texts(pressures)
@@ -32,13 +35,14 @@ class MainWindowView(QDialog, Ui_MainWindow):
         p_widgets = self._get_entry_widgets("psi")
         f_widgets = self._get_entry_widgets("flow")
 
-        if all(widget.hasAcceptableInput() for widget in p_widgets) and all(widget.hasAcceptableInput() for widget in f_widgets):
-            plot(
-                [int(widget.text()) for widget in p_widgets],
-                [float(widget.text()) for widget in f_widgets],
-                self.graph_title.text(),
-                self.uut_legend_entry.text(),
-            )
+        with contextlib.suppress(ValueError):
+            if all(widget.hasAcceptableInput() for widget in p_widgets) and all(widget.hasAcceptableInput() for widget in f_widgets):
+                plot(
+                    [int(widget.text()) for widget in p_widgets],
+                    [float(widget.text()) for widget in f_widgets],
+                    self.graph_title.text(),
+                    self.uut_legend_entry.text(),
+                )
 
     def _get_entry_widgets(self, prefix) -> list[QLineEdit]:
         return [getattr(self, f"{prefix}_{index}") for index in range(1, 8)]
