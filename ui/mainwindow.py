@@ -1,4 +1,5 @@
 import contextlib
+import typing
 
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QDialog, QLineEdit
@@ -8,7 +9,7 @@ from config import config
 from plot import plot
 from .mainwindow_ui import Ui_MainWindow
 
-APP_ICON_PATH = config['appInfo']['appIcon']
+APP_ICON_PATH: str = config['appInfo']['appIcon']
 
 
 class MainWindowView(QDialog, Ui_MainWindow):
@@ -34,7 +35,7 @@ class MainWindowView(QDialog, Ui_MainWindow):
         pressures = config["PLOT"]["pressures"].split(" ")
         self._set_pressure_label_texts(pressures)
 
-    def _create_graph(self):
+    def _create_graph(self) -> None:
         with contextlib.suppress(ValueError):
             plot(
                 [int(widget.text()) for widget in self._get_entry_widgets("psi")],
@@ -46,13 +47,13 @@ class MainWindowView(QDialog, Ui_MainWindow):
     def _get_entry_widgets(self, prefix) -> list[QLineEdit]:
         return [getattr(self, f"{prefix}_{index}") for index in range(1, 8)]
 
-    def _set_pressure_label_texts(self, pressures) -> None:
+    def _set_pressure_label_texts(self, pressures: list[str]) -> None:
         for i in range(1, 8):
             getattr(self, f"{'psi'}_{i}").setText(pressures[i - 1])
 
-    def _apply_visual_validation_to_entry(self, text, widget, type_):
+    def _apply_visual_validation_to_entry(self, text: str, widget: QLineEdit, converter: typing.Callable) -> None:
         try:
-            type_(text)
+            converter(text)
             widget.setStyleSheet(
                 f"QLineEdit {{ background: {self.palette().ColorRole.Base} }}"
             )
