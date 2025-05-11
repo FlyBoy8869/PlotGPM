@@ -4,14 +4,12 @@ from pathlib import Path
 
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QDialog, QLineEdit
-from icecream import ic
 
 from _version import version
 from config import config
 from plot import plot
 from .mainwindow_ui import Ui_MainWindow
 
-ic.configureOutput(includeContext=True)
 
 APP_ICON_PATH = os.path.join(Path(os.path.dirname(__file__)).parent, "icon.ico")
 
@@ -30,7 +28,7 @@ class MainWindowView(QDialog, Ui_MainWindow):
 
         for widget in self._get_entry_widgets("psi") + self._get_entry_widgets("flow"):
             widget.textChanged.connect(
-                lambda _, w=widget: self._apply_visual_validation_to_entry(w, float)
+                lambda text, w=widget: self._apply_visual_validation_to_entry(text, w, float)
             )
 
         self.flow_1.setFocus()
@@ -55,14 +53,14 @@ class MainWindowView(QDialog, Ui_MainWindow):
         for i in range(1, 8):
             getattr(self, f"{'psi'}_{i}").setText(pressures[i - 1])
 
-    def _apply_visual_validation_to_entry(self, widget, type_):
+    def _apply_visual_validation_to_entry(self, text, widget, type_):
         try:
-            type_(widget.text())
+            type_(text)
             widget.setStyleSheet(
                 f"QLineEdit {{ background: {self.palette().ColorRole.Base} }}"
             )
         except ValueError:
-            if widget.text():
+            if text:
                 widget.setStyleSheet("QLineEdit { background: red }")
             else:
                 widget.setStyleSheet(
