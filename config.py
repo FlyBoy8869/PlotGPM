@@ -9,3 +9,4 @@ config.read(CONFIG_FILE)
 
 config.add_section("appInfo")
 config["appInfo"]["appRoot"] = os.path.dirname(__file__)
+config["appInfo"]["appIcon"] = os.path.join(config['appInfo']['appRoot'], "icon.ico")

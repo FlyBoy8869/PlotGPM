@@ -1,6 +1,4 @@
 import contextlib
-import os.path
-from pathlib import Path
 
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QDialog, QLineEdit
@@ -10,8 +8,7 @@ from config import config
 from plot import plot
 from .mainwindow_ui import Ui_MainWindow
 
-
-APP_ICON_PATH = os.path.join(Path(os.path.dirname(__file__)).parent, "icon.ico")
+APP_ICON_PATH = config['appInfo']['appIcon']
 
 
 class MainWindowView(QDialog, Ui_MainWindow):
