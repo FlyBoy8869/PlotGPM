@@ -2,7 +2,7 @@ import contextlib
 import os.path
 from pathlib import Path
 
-from PySide6.QtGui import QIcon, QPalette
+from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QDialog, QLineEdit
 from icecream import ic
 
@@ -14,6 +14,7 @@ from .mainwindow_ui import Ui_MainWindow
 ic.configureOutput(includeContext=True)
 
 APP_ICON_PATH = os.path.join(Path(os.path.dirname(__file__)).parent, "icon.ico")
+
 
 class MainWindowView(QDialog, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -27,13 +28,10 @@ class MainWindowView(QDialog, Ui_MainWindow):
 
         self.create_graph.clicked.connect(self._create_graph)
 
-        self.flow_background: QPalette.ColorRole = self.flow_1.backgroundRole()
-
-        psi_widgets = self._get_entry_widgets("psi")
-        flow_widgets = self._get_entry_widgets("flow")
-        for psi_widget, flow_widget in zip(psi_widgets, flow_widgets):
-            psi_widget.textChanged.connect(lambda _, w=psi_widget: self._validate_flow_entry(w))
-            flow_widget.textChanged.connect(lambda _, w=flow_widget: self._validate_flow_entry(w))
+        for widget in self._get_entry_widgets("psi") + self._get_entry_widgets("flow"):
+            widget.textChanged.connect(
+                lambda _, w=widget: self._validate_entry(w, float)
+            )
 
         self.flow_1.setFocus()
 
@@ -60,12 +58,16 @@ class MainWindowView(QDialog, Ui_MainWindow):
         for i in range(1, 8):
             getattr(self, f"{'psi'}_{i}").setText(pressures[i - 1])
 
-    def _validate_flow_entry(self, widget):
+    def _validate_entry(self, widget, type_):
         try:
-            float(widget.text())
-            widget.setStyleSheet(f"QLineEdit {{ background: {self.flow_background} }}")
+            type_(widget.text())
+            widget.setStyleSheet(
+                f"QLineEdit {{ background: {self.palette().ColorRole.Base} }}"
+            )
         except ValueError:
             if widget.text():
                 widget.setStyleSheet("QLineEdit { background: red }")
             else:
-                widget.setStyleSheet(f"QLineEdit {{ background: {self.flow_background} }}")
+                widget.setStyleSheet(
+                    f"QLineEdit {{ background: {self.palette().ColorRole.Base} }}"
+                )
