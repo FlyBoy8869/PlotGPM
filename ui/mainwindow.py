@@ -30,7 +30,7 @@ class MainWindowView(QDialog, Ui_MainWindow):
 
         for widget in self._get_entry_widgets("psi") + self._get_entry_widgets("flow"):
             widget.textChanged.connect(
-                lambda _, w=widget: self._validate_entry(w, float)
+                lambda _, w=widget: self._apply_visual_validation_to_entry(w, float)
             )
 
         self.flow_1.setFocus()
@@ -55,7 +55,7 @@ class MainWindowView(QDialog, Ui_MainWindow):
         for i in range(1, 8):
             getattr(self, f"{'psi'}_{i}").setText(pressures[i - 1])
 
-    def _validate_entry(self, widget, type_):
+    def _apply_visual_validation_to_entry(self, widget, type_):
         try:
             type_(widget.text())
             widget.setStyleSheet(
