@@ -2,7 +2,7 @@ import contextlib
 import os.path
 from pathlib import Path
 
-from PySide6.QtGui import QIcon
+from PySide6.QtGui import QIcon, QPalette
 from PySide6.QtWidgets import QDialog, QLineEdit
 from icecream import ic
 
@@ -26,6 +26,14 @@ class MainWindowView(QDialog, Ui_MainWindow):
         self.graph_title.setText(config["PLOT"]["title"])
 
         self.create_graph.clicked.connect(self._create_graph)
+
+        self.flow_background: QPalette.ColorRole = self.flow_1.backgroundRole()
+
+        psi_widgets = self._get_entry_widgets("psi")
+        flow_widgets = self._get_entry_widgets("flow")
+        for psi_widget, flow_widget in zip(psi_widgets, flow_widgets):
+            psi_widget.textChanged.connect(lambda _, w=psi_widget: self._validate_flow_entry(w))
+            flow_widget.textChanged.connect(lambda _, w=flow_widget: self._validate_flow_entry(w))
 
         self.flow_1.setFocus()
 
@@ -51,3 +59,13 @@ class MainWindowView(QDialog, Ui_MainWindow):
     def _set_pressure_label_texts(self, pressures) -> None:
         for i in range(1, 8):
             getattr(self, f"{'psi'}_{i}").setText(pressures[i - 1])
+
+    def _validate_flow_entry(self, widget):
+        try:
+            float(widget.text())
+            widget.setStyleSheet(f"QLineEdit {{ background: {self.flow_background} }}")
+        except ValueError:
+            if widget.text():
+                widget.setStyleSheet("QLineEdit { background: red }")
+            else:
+                widget.setStyleSheet(f"QLineEdit {{ background: {self.flow_background} }}")
