@@ -40,13 +40,10 @@ class MainWindowView(QDialog, Ui_MainWindow):
         self._set_pressure_label_texts(pressures)
 
     def _create_graph(self):
-        p_widgets = self._get_entry_widgets("psi")
-        f_widgets = self._get_entry_widgets("flow")
-
         with contextlib.suppress(ValueError):
             plot(
-                [int(widget.text()) for widget in p_widgets],
-                [float(widget.text()) for widget in f_widgets],
+                [int(widget.text()) for widget in self._get_entry_widgets("psi")],
+                [float(widget.text()) for widget in self._get_entry_widgets("flow")],
                 self.graph_title.text(),
                 self.uut_legend_entry.text(),
             )
