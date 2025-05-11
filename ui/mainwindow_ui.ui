@@ -58,7 +58,7 @@
      <item row="1" column="1">
       <widget class="QLineEdit" name="psi_1">
        <property name="inputMask">
-        <string>0000</string>
+        <string/>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -68,10 +68,13 @@
      <item row="1" column="2">
       <widget class="QLineEdit" name="flow_1">
        <property name="inputMask">
-        <string>09.00</string>
+        <string/>
        </property>
        <property name="text">
-        <string>.</string>
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
        </property>
        <property name="cursorPosition">
         <number>0</number>
@@ -83,7 +86,7 @@
         <string/>
        </property>
        <property name="clearButtonEnabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -97,7 +100,7 @@
      <item row="2" column="1">
       <widget class="QLineEdit" name="psi_2">
        <property name="inputMask">
-        <string>0000</string>
+        <string/>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -107,10 +110,13 @@
      <item row="2" column="2">
       <widget class="QLineEdit" name="flow_2">
        <property name="inputMask">
-        <string>09.00</string>
+        <string/>
        </property>
        <property name="text">
-        <string>.</string>
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
        </property>
        <property name="cursorPosition">
         <number>0</number>
@@ -122,7 +128,7 @@
         <string/>
        </property>
        <property name="clearButtonEnabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -136,7 +142,7 @@
      <item row="3" column="1">
       <widget class="QLineEdit" name="psi_3">
        <property name="inputMask">
-        <string>0000</string>
+        <string/>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -146,10 +152,13 @@
      <item row="3" column="2">
       <widget class="QLineEdit" name="flow_3">
        <property name="inputMask">
-        <string>09.00</string>
+        <string/>
        </property>
        <property name="text">
-        <string>.</string>
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
        </property>
        <property name="cursorPosition">
         <number>0</number>
@@ -161,7 +170,7 @@
         <string/>
        </property>
        <property name="clearButtonEnabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -175,7 +184,7 @@
      <item row="4" column="1">
       <widget class="QLineEdit" name="psi_4">
        <property name="inputMask">
-        <string>0000</string>
+        <string/>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -185,10 +194,13 @@
      <item row="4" column="2">
       <widget class="QLineEdit" name="flow_4">
        <property name="inputMask">
-        <string>09.00</string>
+        <string/>
        </property>
        <property name="text">
-        <string>.</string>
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
        </property>
        <property name="cursorPosition">
         <number>0</number>
@@ -200,7 +212,7 @@
         <string/>
        </property>
        <property name="clearButtonEnabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -214,7 +226,7 @@
      <item row="5" column="1">
       <widget class="QLineEdit" name="psi_5">
        <property name="inputMask">
-        <string>0000</string>
+        <string/>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -224,10 +236,13 @@
      <item row="5" column="2">
       <widget class="QLineEdit" name="flow_5">
        <property name="inputMask">
-        <string>09.00</string>
+        <string/>
        </property>
        <property name="text">
-        <string>.</string>
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
        </property>
        <property name="cursorPosition">
         <number>0</number>
@@ -239,7 +254,7 @@
         <string/>
        </property>
        <property name="clearButtonEnabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -253,7 +268,7 @@
      <item row="6" column="1">
       <widget class="QLineEdit" name="psi_6">
        <property name="inputMask">
-        <string>0000</string>
+        <string/>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -263,10 +278,13 @@
      <item row="6" column="2">
       <widget class="QLineEdit" name="flow_6">
        <property name="inputMask">
-        <string>09.00</string>
+        <string/>
        </property>
        <property name="text">
-        <string>.</string>
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
        </property>
        <property name="cursorPosition">
         <number>0</number>
@@ -278,7 +296,7 @@
         <string/>
        </property>
        <property name="clearButtonEnabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -292,7 +310,7 @@
      <item row="7" column="1">
       <widget class="QLineEdit" name="psi_7">
        <property name="inputMask">
-        <string>0000</string>
+        <string/>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -302,10 +320,13 @@
      <item row="7" column="2">
       <widget class="QLineEdit" name="flow_7">
        <property name="inputMask">
-        <string>09.00</string>
+        <string/>
        </property>
        <property name="text">
-        <string>.</string>
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
        </property>
        <property name="cursorPosition">
         <number>0</number>
@@ -317,7 +338,7 @@
         <string/>
        </property>
        <property name="clearButtonEnabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
      </item>

@@ -2,14 +2,16 @@ import contextlib
 import os.path
 from pathlib import Path
 
-from PySide6.QtWidgets import QDialog, QLineEdit
 from PySide6.QtGui import QIcon
-
-from .mainwindow_ui import Ui_MainWindow
-from config import config
-from plot import plot
+from PySide6.QtWidgets import QDialog, QLineEdit
+from icecream import ic
 
 from _version import version
+from config import config
+from plot import plot
+from .mainwindow_ui import Ui_MainWindow
+
+ic.configureOutput(includeContext=True)
 
 APP_ICON_PATH = os.path.join(Path(os.path.dirname(__file__)).parent, "icon.ico")
 
@@ -36,13 +38,12 @@ class MainWindowView(QDialog, Ui_MainWindow):
         f_widgets = self._get_entry_widgets("flow")
 
         with contextlib.suppress(ValueError):
-            if all(widget.hasAcceptableInput() for widget in p_widgets) and all(widget.hasAcceptableInput() for widget in f_widgets):
-                plot(
-                    [int(widget.text()) for widget in p_widgets],
-                    [float(widget.text()) for widget in f_widgets],
-                    self.graph_title.text(),
-                    self.uut_legend_entry.text(),
-                )
+            plot(
+                [int(widget.text()) for widget in p_widgets],
+                [float(widget.text()) for widget in f_widgets],
+                self.graph_title.text(),
+                self.uut_legend_entry.text(),
+            )
 
     def _get_entry_widgets(self, prefix) -> list[QLineEdit]:
         return [getattr(self, f"{prefix}_{index}") for index in range(1, 8)]
