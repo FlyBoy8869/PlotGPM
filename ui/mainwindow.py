@@ -55,12 +55,12 @@ class MainWindowView(QDialog, Ui_MainWindow):
         try:
             converter(text)
             widget.setStyleSheet(
-                f"QLineEdit {{ background: {self.palette().ColorRole.Base} }}"
+                f"QLineEdit {{ background: {self.palette().ColorRole.Base}; color: {self.palette().ColorRole.Text} }}"
             )
         except ValueError:
             if text:
-                widget.setStyleSheet("QLineEdit { background: red }")
+                widget.setStyleSheet("QLineEdit { background: red; color: white }")
             else:
                 widget.setStyleSheet(
-                    f"QLineEdit {{ background: {self.palette().ColorRole.Base} }}"
+                    f"QLineEdit {{ background: {self.palette().ColorRole.Base}; color: {self.palette().ColorRole.Text} }}"
                 )
