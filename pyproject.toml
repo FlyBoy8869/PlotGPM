@@ -2,7 +2,7 @@
 name = "plotgpm"
 version = "0.1.0"
 description = "Plot a scatter graph of water flow in GPM at given pressures."
-requires-python = ">=3.13"
+requires-python = ">=3.13.3"
 dependencies = [
     "matplotlib>=3.10.1",
     "pyside6>=6.8.3",
