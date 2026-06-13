@@ -4,8 +4,8 @@ from config import config
 import json
 import matplotlib.pyplot as plt
 
-app_root = os.path.dirname(__file__)
-BASELINE_FILE = os.path.join(f"{app_root}", "baseline_flow_data_2008")
+app_root: str = os.path.dirname(__file__)
+BASELINE_FILE = os.path.join(app_root, "baseline_flow_data_2008")
 
 
 def config_get(section: str, key: str):
