@@ -19,7 +19,7 @@ class MainWindowView(QDialog, Ui_MainWindow):
 
         self.setWindowIcon(QIcon(APP_ICON_PATH))
         self.setWindowTitle(f"PlotGPM - {version}")
-        self.load_default_pressures()
+        self._load_default_pressures()
         self.graph_title.setText(config["PLOT"]["title"])
 
         self.create_graph.clicked.connect(self._create_graph)
@@ -31,7 +31,7 @@ class MainWindowView(QDialog, Ui_MainWindow):
 
         self.flow_1.setFocus()
 
-    def load_default_pressures(self) -> None:
+    def _load_default_pressures(self) -> None:
         pressures = config["PLOT"]["pressures"].split(" ")
         self._set_pressure_labels(pressures)
 
