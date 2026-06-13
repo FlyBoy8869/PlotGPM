@@ -33,7 +33,7 @@ class MainWindowView(QDialog, Ui_MainWindow):
 
     def load_default_pressures(self) -> None:
         pressures = config["PLOT"]["pressures"].split(" ")
-        self._set_pressure_label_texts(pressures)
+        self._set_pressure_labels(pressures)
 
     def _create_graph(self) -> None:
         with contextlib.suppress(ValueError):
@@ -47,7 +47,7 @@ class MainWindowView(QDialog, Ui_MainWindow):
     def _get_entry_widgets(self, prefix) -> list[QLineEdit]:
         return [getattr(self, f"{prefix}_{index}") for index in range(1, 8)]
 
-    def _set_pressure_label_texts(self, pressures: list[str]) -> None:
+    def _set_pressure_labels(self, pressures: list[str]) -> None:
         for i in range(1, 8):
             getattr(self, f"{'psi'}_{i}").setText(pressures[i - 1])
 
